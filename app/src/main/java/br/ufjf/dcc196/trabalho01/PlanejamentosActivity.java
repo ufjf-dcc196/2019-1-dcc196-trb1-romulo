@@ -56,6 +56,8 @@ public class PlanejamentosActivity extends AppCompatActivity {
                     public void onPalavraClick(View v, int position) {
                         String msn = String.valueOf(matriz.get(position));
                         Toast.makeText(PlanejamentosActivity.this, msn, Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(PlanejamentosActivity.this, NovaDisciplinaCursadaActivity.class);
+                        startActivity(intent);
                     }
                 });
             }
