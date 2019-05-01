@@ -12,11 +12,11 @@ import java.util.ArrayList;
 
 public class Table2Adapter extends RecyclerView.Adapter<Table2Adapter.ViewHolder> {
 
-    private ArrayList<ArrayList<String>> materias;
+    private ArrayList<String[]> materias;
 
     private Table2Adapter.OnPalavra2ClickListener listener;
 
-    public Table2Adapter(ArrayList<ArrayList<String>> materias) {
+    public Table2Adapter(ArrayList<String[]> materias) {
         this.materias = materias;
     }
 
@@ -36,10 +36,20 @@ public class Table2Adapter extends RecyclerView.Adapter<Table2Adapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull Table2Adapter.ViewHolder holder, int position) {
-        ArrayList<String> l = materias.get(position);
+
+        //for(int i=0; i<materias.size(); i++) {
+
+            String[] l = materias.get(position);
+
+            holder.txtMateria.setText(String.valueOf(l[0]));
+            holder.txtTotalHoras.setText(String.valueOf(l[1]));
+            holder.txtArea.setText(String.valueOf(l[2]));
+        //}
+
+        /*ArrayList<String> l = materias.get(position);
         holder.txtMateria.setText(String.valueOf(l.get(0)));
         holder.txtArea.setText(String.valueOf(l.get(0)));
-        holder.txtTotalHoras.setText(String.valueOf(l.get(0)));
+        holder.txtTotalHoras.setText(String.valueOf(l.get(0)));*/
     }
 
     @Override

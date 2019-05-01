@@ -30,12 +30,12 @@ public class NovaDisciplinaCursadaActivity extends AppCompatActivity {
                 EditText etArea = findViewById(R.id.etArea);
                 EditText etAno = findViewById(R.id.etAno);
                 EditText etSemestre = findViewById(R.id.etSemestre);
-                ArrayList<String> materia = new ArrayList<>();
-                materia.add(etAno.getText().toString());
-                materia.add(etSemestre.getText().toString());
-                materia.add(etNome.getText().toString());
-                materia.add(etTotalHoras.getText().toString());
-                materia.add(etArea.getText().toString());
+                String[] materia = new String[5];
+                materia[3] = (etAno.getText().toString());
+                materia[4] = (etSemestre.getText().toString());
+                materia[0] = (etNome.getText().toString());
+                materia[1] = (etTotalHoras.getText().toString());
+                materia[2] = (etArea.getText().toString());
 
                 Intent intent = new Intent();
                 intent.putExtra("materia", materia);

@@ -15,7 +15,7 @@ import static br.ufjf.dcc196.trabalho01.R.id.rvTabela;
 
 public class DisciplinasCursadasActivity extends AppCompatActivity {
 
-    public ArrayList<ArrayList<String>> materias = new ArrayList<ArrayList<String>>();
+    public ArrayList<String[]> materias;
 
     //materias.add({"2016", "1", "Matematica", "10", "Exatas"});
 
@@ -35,9 +35,9 @@ public class DisciplinasCursadasActivity extends AppCompatActivity {
 
         Bundle bundleExtras = getIntent().getExtras();
         if(bundleExtras!=null){
-            bundleExtras.getString("materias");
-            ArrayList<String> a = (ArrayList<String>) getIntent().getSerializableExtra("materias");
-            materias.add(a);
+            bundleExtras.getString("materia");
+            ArrayList<String[]> a = (ArrayList<String[]>) getIntent().getSerializableExtra("materia");
+            materias = a;
         }
 
 
