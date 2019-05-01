@@ -38,6 +38,16 @@
             l.add("Testando");
             matriz.add(l);
 
+            ArrayList<String> a = new ArrayList<>();
+            a.add("2016");
+            a.add("3");
+            a.add("MAtematica");
+            a.add("2");
+            a.add("Exatas");
+            materias.add(a);
+            materias.add(a);
+
+
             System.out.println(matriz);
             for (int j=0; j<6; j++) {
                 l.add("test");
@@ -62,9 +72,8 @@
             tAdapter.setListener(new TableAdapter.OnPalavraClickListener() {
                 @Override
                 public void onPalavraClick(View v, int position) {
-                    String msn = String.valueOf(matriz.get(position));
-                    Toast.makeText(PlanejamentosActivity.this, msn, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(PlanejamentosActivity.this, DisciplinasCursadasActivity.class);
+                    intent.putExtra("materias", materias);
                     startActivity(intent);
                 }
             });
@@ -105,7 +114,7 @@
                 else if (requestCode == PlanejamentosActivity.REQUEST_MATERIA && resultCode == PlanejamentosActivity.RESULT_OK){
                     Bundle bundle = data.getExtras();
                     ArrayList<String> materia = new ArrayList<>();
-                    materia = (ArrayList<String>) bundle.get("materia");
+                    materia = ((ArrayList<String>) bundle.get("materia"));
                     this.materias.add(materia);
                     rvAtt();
                 }

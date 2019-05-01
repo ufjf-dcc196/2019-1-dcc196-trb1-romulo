@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -30,7 +28,11 @@ public class NovaDisciplinaCursadaActivity extends AppCompatActivity {
                 EditText etNome = findViewById(R.id.etNomeMateria);
                 EditText etTotalHoras = findViewById(R.id.etTotalHoras);
                 EditText etArea = findViewById(R.id.etArea);
-                ArrayList<String> materia = new ArrayList<String>();
+                EditText etAno = findViewById(R.id.etAno);
+                EditText etSemestre = findViewById(R.id.etSemestre);
+                ArrayList<String> materia = new ArrayList<>();
+                materia.add(etAno.getText().toString());
+                materia.add(etSemestre.getText().toString());
                 materia.add(etNome.getText().toString());
                 materia.add(etTotalHoras.getText().toString());
                 materia.add(etArea.getText().toString());
