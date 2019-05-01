@@ -15,7 +15,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Novo Planejamento"
+        android:text="@string/novo_planejamento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,11 +30,12 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:ems="10"
-        android:hint="Ano"
+        android:hint="@string/ano"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:importantForAutofill="no" tools:targetApi="o"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -45,7 +46,7 @@
         android:layout_marginTop="56dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Informe o Tempo"
+        android:text="@string/informe_o_tempo_para_cada_rea"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,20 +79,22 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Línguas"
+                android:hint="@string/l_nguas"
                 android:inputType="number"
                 tools:layout_editor_absoluteX="235dp"
-                tools:layout_editor_absoluteY="413dp" />
+                tools:layout_editor_absoluteY="413dp"
+                android:importantForAutofill="no" tools:targetApi="o" />
 
             <EditText
                 android:id="@+id/etHumanas"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:ems="10"
-                android:hint="Humanas"
+                android:hint="@string/humanas"
                 android:inputType="number"
                 tools:layout_editor_absoluteX="98dp"
-                tools:layout_editor_absoluteY="439dp" />
+                tools:layout_editor_absoluteY="439dp"
+                android:importantForAutofill="no" tools:targetApi="o" />
         </TableRow>
 
         <TableRow
@@ -103,20 +106,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Exatas"
+                android:hint="@string/exatas"
                 android:inputType="number"
                 tools:layout_editor_absoluteX="249dp"
-                tools:layout_editor_absoluteY="368dp" />
+                tools:layout_editor_absoluteY="368dp"
+                android:importantForAutofill="no" tools:targetApi="o" />
 
             <EditText
                 android:id="@+id/etSaude"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:ems="10"
-                android:hint="Saúde"
+                android:hint="@string/sa_de"
                 android:inputType="number"
                 tools:layout_editor_absoluteX="98dp"
-                tools:layout_editor_absoluteY="353dp" />
+                tools:layout_editor_absoluteY="353dp"
+                android:importantForAutofill="no" tools:targetApi="o" />
         </TableRow>
 
     </TableLayout>
@@ -130,7 +135,7 @@
         android:layout_marginTop="248dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Cadastrar"
+        android:text="@string/cadastrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
@@ -145,10 +150,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:ems="10"
-        android:hint="Semestre"
+        android:hint="@string/semestre"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etAno" />
+        app:layout_constraintTop_toBottomOf="@+id/etAno"
+        android:importantForAutofill="no" tools:targetApi="o" />
 
 </android.support.constraint.ConstraintLayout>
