@@ -17,8 +17,6 @@
 
         ArrayList<ArrayList<String>> matriz = new ArrayList<ArrayList<String>>();
         ArrayList<String[]> materias = new ArrayList<>();
-
-
         TableAdapter tAdapter;
         RecyclerView rv;
 
@@ -33,35 +31,30 @@
             x = (y*100)/total;
             return x;
         }
-
         private ArrayList<String> convertePorcentagem(ArrayList<String> a){
             float total = Float.parseFloat(a.get(2));
             float l = Integer.parseInt(a.get(3));
             float h = Float.parseFloat(a.get(4));
             float e = Float.parseFloat(a.get(5));
             float s = Float.parseFloat(a.get(6));
-
             l = porcentagem(total, l);
             h = porcentagem(total, h);
             e = porcentagem(total, e);
             s = porcentagem(total, s);
-
             System.out.println(l);
-
             a.set(3, String.valueOf(l));
             a.set(4, String.valueOf(h));
             a.set(5, String.valueOf(e));
             a.set(6, String.valueOf(s));
-
             return a;
         }
-
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.planejamentos_activity);
             //--------------------------Adicionado dados para teste---------------------------------
+            //---------------------------------Planejamento-----------------------------------------
             ArrayList<String> l0 = new ArrayList<String>();
             l0.add("Ano");
             l0.add("Semestre");
@@ -71,7 +64,6 @@
             l0.add("Exatas (%)");
             l0.add("Saúde (%)");
             matriz.add(l0);
-
             ArrayList<String> l1 = new ArrayList<String>();
             l1.add("2016");
             l1.add("1");
@@ -81,7 +73,6 @@
             l1.add("27.7");
             l1.add("16.7");
             matriz.add(l1);
-
             ArrayList<String> l2 = new ArrayList<String>();
             l2.add("2016");
             l2.add("2");
@@ -91,18 +82,14 @@
             l2.add("31.25");
             l2.add("18.75");
             matriz.add(l2);
-
+            //--------------------------------Fim Planjamento---------------------------------------
+            //------------------------------------Materias------------------------------------------
             materias.add(new String[]{"Materia", "Horas(h)", "Área", "Ano", "Semestre"});
             materias.add(new String[]{"Matematica", "5", "Exatas", "2016", "3"});
             materias.add(new String[]{"Portugues", "3", "Linguas", "2016", "1"});
             materias.add(new String[]{"Historia", "5", "Humanas", "2017", "3"});
-
-            materias.set(1,materias.get(1));
-            //--------------------------------------------------------------------------------------
-
-
-            System.out.println(matriz);
-
+            //-------------------------------Fim Tabela de MAterias---------------------------------
+            //--------------------------------------FIM DADOS---------------------------------------
             Button btnPlanejamento = findViewById(R.id.btnPlanejamento);
             Button btnMateria = findViewById(R.id.btnMateria);
             Button btnAtt = findViewById(R.id.btnAtualizar);
@@ -115,12 +102,10 @@
             });
             tAdapter = new TableAdapter(matriz);
 
-
             tAdapter.setListener(new TableAdapter.OnPalavraClickListener() {
                 @Override
                 public void onPalavraClick(View v, int position) {
                     Intent intent = new Intent(PlanejamentosActivity.this, DisciplinasCursadasActivity.class);
-
                     String[] temp = new ArrayList<>().toArray(new String[6]);
                     ArrayList<String> tempMatriz = new ArrayList<>();
                     tempMatriz = matriz.get(position);
@@ -131,14 +116,10 @@
                             materia.add(temp);
                         }
                     }
-
-
-
                     intent.putExtra("materia", materia);
                     startActivity(intent);
                 }
             });
-
 
             btnPlanejamento.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -147,7 +128,6 @@
                     startActivityForResult(intent, PlanejamentosActivity.REQUEST_PLANEJAMENTO);
                 }
             });
-
 
             btnMateria.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -158,8 +138,6 @@
             });
 
         }
-
-
 
         @Override
         protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

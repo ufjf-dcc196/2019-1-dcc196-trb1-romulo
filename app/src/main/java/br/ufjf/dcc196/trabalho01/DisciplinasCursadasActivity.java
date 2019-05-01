@@ -14,10 +14,7 @@ import java.util.ArrayList;
 import static br.ufjf.dcc196.trabalho01.R.id.rvTabela;
 
 public class DisciplinasCursadasActivity extends AppCompatActivity {
-
     public ArrayList<String[]> materias;
-
-    //materias.add({"2016", "1", "Matematica", "10", "Exatas"});
 
     Table2Adapter tAdapter;
     RecyclerView rv;
@@ -51,13 +48,5 @@ public class DisciplinasCursadasActivity extends AppCompatActivity {
         });
 
         tAdapter = new Table2Adapter(this.materias);
-
-        tAdapter.setListener(new Table2Adapter.OnPalavra2ClickListener() {
-            @Override
-            public void onPalavra2Click(View v, int position) {
-                String msn = String.valueOf(materias.get(position));
-                Toast.makeText(DisciplinasCursadasActivity.this, msn, Toast.LENGTH_LONG).show();
-            }
-        });
     }
 }

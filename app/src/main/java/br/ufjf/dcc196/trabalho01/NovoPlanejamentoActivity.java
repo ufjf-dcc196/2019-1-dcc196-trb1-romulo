@@ -18,8 +18,6 @@ public class NovoPlanejamentoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novo_planejamento);
 
-        Toast.makeText(getApplicationContext(),"NovoPlanejamentoActivitY criada", Toast.LENGTH_SHORT).show();
-
         Bundle bundle = getIntent().getExtras();
 
         Button btnCadastraPlanejamento = findViewById(R.id.btnCadastraPlanejamento);
@@ -33,8 +31,11 @@ public class NovoPlanejamentoActivity extends AppCompatActivity {
                 EditText etExatas = findViewById(R.id.etExatas);
                 EditText etSaude = findViewById(R.id.etSaude);
                 EditText etSemestre = findViewById((R.id.etSemestre));
+
                 int count = Integer.valueOf(etLinguas.getText().toString())+Integer.valueOf(etHumanas.getText().toString())+Integer.valueOf(etExatas.getText().toString())+Integer.valueOf(etSaude.getText().toString());
+
                 ArrayList<String> planejamento = new ArrayList<String>();
+
                 planejamento.add(etAno.getText().toString());
                 planejamento.add(etSemestre.getText().toString());
                 planejamento.add(String.valueOf(count));
