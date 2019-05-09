@@ -2,6 +2,7 @@ package br.ufjf.dcc196.trabalho01;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class NovoPlanejamentoActivity extends AppCompatActivity {
@@ -34,18 +36,22 @@ public class NovoPlanejamentoActivity extends AppCompatActivity {
 
                 int count = Integer.valueOf(etLinguas.getText().toString())+Integer.valueOf(etHumanas.getText().toString())+Integer.valueOf(etExatas.getText().toString())+Integer.valueOf(etSaude.getText().toString());
 
-                ArrayList<String> planejamento = new ArrayList<String>();
+                Planejamentos planejamento = new Planejamentos();
 
-                planejamento.add(etAno.getText().toString());
-                planejamento.add(etSemestre.getText().toString());
-                planejamento.add(String.valueOf(count));
-                planejamento.add(etLinguas.getText().toString());
-                planejamento.add(etHumanas.getText().toString());
-                planejamento.add(etExatas.getText().toString());
-                planejamento.add(etSaude.getText().toString());
+                planejamento.setAno(Integer.valueOf(String.valueOf(etAno.getText())));
+                planejamento.setSemestre(Integer.valueOf(String.valueOf(etSemestre.getText())));
+                planejamento.setHorasLinguas(Float.valueOf(etLinguas.getText().toString()));
+                planejamento.setHorasHumanas(Float.valueOf(etHumanas.getText().toString()));
+                planejamento.setHorasExatas(Float.valueOf(etExatas.getText().toString()));
+                planejamento.setHorasSaude(Float.valueOf(etSaude.getText().toString()));
 
                 Intent intent = new Intent();
-                intent.putExtra("planejamento", planejamento);
+                intent.putExtra("ano", planejamento.getAno());
+                intent.putExtra("semestre", planejamento.getSemestre());
+                intent.putExtra("hLinguas", planejamento.getHorasLinguas());
+                intent.putExtra("hHumanas", planejamento.getHorasHumanas());
+                intent.putExtra("hExatas", planejamento.getHorasExatas());
+                intent.putExtra("hSaude", planejamento.getHorasHumanas());
                 setResult(Activity.RESULT_OK, intent);
                 finish();
             }

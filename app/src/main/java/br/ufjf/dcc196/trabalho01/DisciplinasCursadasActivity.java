@@ -1,6 +1,7 @@
 package br.ufjf.dcc196.trabalho01;
 
 import android.annotation.SuppressLint;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,14 +15,15 @@ import java.util.ArrayList;
 import static br.ufjf.dcc196.trabalho01.R.id.rvTabela;
 
 public class DisciplinasCursadasActivity extends AppCompatActivity {
-    public ArrayList<String[]> materias;
+    public ArrayList<Disciplinas> materias;
 
-    Table2Adapter tAdapter;
+    //Table2Adapter tAdapter;
+    DisciplinasAdapter dAdapter;
     RecyclerView rv;
 
     private void rvAtt (){
         rv = findViewById(rvTabela);
-        rv.setAdapter(tAdapter);
+        rv.setAdapter(dAdapter);
         rv.setLayoutManager(new LinearLayoutManager(DisciplinasCursadasActivity.this));
     }
 
@@ -32,9 +34,9 @@ public class DisciplinasCursadasActivity extends AppCompatActivity {
 
         Bundle bundleExtras = getIntent().getExtras();
         if(bundleExtras!=null){
-            bundleExtras.getString("materia");
-            ArrayList<String[]> a = (ArrayList<String[]>) getIntent().getSerializableExtra("materia");
-            materias = a;
+            bundleExtras.getString("disciplinas");
+            ArrayList<Disciplinas> dados = (ArrayList<Disciplinas>) getIntent().getSerializableExtra("dados");
+            materias = dados;
         }
 
 
@@ -47,6 +49,6 @@ public class DisciplinasCursadasActivity extends AppCompatActivity {
             }
         });
 
-        tAdapter = new Table2Adapter(this.materias);
+        dAdapter = new DisciplinasAdapter(this.materias);
     }
 }

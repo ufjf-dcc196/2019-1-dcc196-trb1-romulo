@@ -2,6 +2,7 @@ package br.ufjf.dcc196.trabalho01;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class NovaDisciplinaCursadaActivity extends AppCompatActivity {
@@ -31,16 +33,22 @@ public class NovaDisciplinaCursadaActivity extends AppCompatActivity {
                 EditText etAno = findViewById(R.id.etAno);
                 EditText etSemestre = findViewById(R.id.etSemestre);
 
-                String[] materia = new String[5];
+                Disciplinas disc = new Disciplinas();
 
-                materia[3] = (etAno.getText().toString());
-                materia[4] = (etSemestre.getText().toString());
-                materia[0] = (etNome.getText().toString());
-                materia[1] = (etTotalHoras.getText().toString());
-                materia[2] = (etArea.getText().toString());
+                disc.setNome((etNome.getText().toString()));
+                disc.setThoras(Float.parseFloat((etTotalHoras.getText().toString())));
+                disc.setArea((etArea.getText().toString()));
+
+                //Dados para verificar o ano e semestre da materia
+                int ano = Integer.valueOf(etAno.getText().toString());
+                int semestre = Integer.valueOf(etSemestre.getText().toString());
 
                 Intent intent = new Intent();
-                intent.putExtra("materia", materia);
+                intent.putExtra("nome", disc.getNome());
+                intent.putExtra("tHora", disc.getThoras());
+                intent.putExtra("area", disc.getArea());
+                intent.putExtra("ano", ano);
+                intent.putExtra("semestre", semestre);
                 setResult(Activity.RESULT_OK, intent);
                 finish();
             }

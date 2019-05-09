@@ -9,47 +9,43 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
+public class PlanejamentosAdapter extends RecyclerView.Adapter<PlanejamentosAdapter.ViewHolder> {
 
-public class TableAdapter extends RecyclerView.Adapter<TableAdapter.ViewHolder> {
+    private ArrayList<Planejamentos> p;
 
-    private ArrayList<ArrayList<String>> matriz;
+    private OnPlanejamentoClickListener listener;
 
-    private OnPalavraClickListener listener;
-
-    public TableAdapter(ArrayList<ArrayList<String>> matriz) {
-        this.matriz = matriz;
+    public PlanejamentosAdapter(ArrayList<Planejamentos> planejamentos) {
+        this.p = planejamentos;
     }
 
-    public void setListener(OnPalavraClickListener listener) {
-        this.listener = listener;
-    }
+    public void setListener(OnPlanejamentoClickListener listener){this.listener = listener; }
 
+    @NonNull
     @Override
-    public TableAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View linha = inflater.inflate(R.layout.table_layout,parent,false);
+        View linha = inflater.inflate(R.layout.table_layout, parent, false);
         ViewHolder vh = new ViewHolder(linha);
         return vh;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ArrayList<String> l = matriz.get(position);
-        holder.txtAno.setText(String.valueOf(l.get(0)));
-        holder.txtSemestre.setText(String.valueOf(l.get(1)));
-        holder.txtTotalHoras.setText(String.valueOf(l.get(2)));
-        holder.txtLinguas.setText(String.valueOf(l.get(3)));
-        holder.txtHumanas.setText(String.valueOf(l.get(4)));
-        holder.txtExatas.setText(String.valueOf(l.get(5)));
-        holder.txtSaude.setText(String.valueOf(l.get(6)));
+        holder.txtAno.setText(String.valueOf(p.get(position).getAno()));
+        holder.txtSemestre.setText(String.valueOf(p.get(position).getSemestre()));
+        holder.txtTotalHoras.setText(String.valueOf(p.get(position).getHoras()) + "h");
+        holder.txtLinguas.setText(String.valueOf(p.get(position).getHorasLinguas()) + "h");
+        holder.txtHumanas.setText(String.valueOf(p.get(position).getHorasHumanas()) + "h");
+        holder.txtExatas.setText(String.valueOf(p.get(position).getHorasExatas()) + "h");
+        holder.txtSaude.setText(String.valueOf(p.get(position).getHorasSaude()) + "h");
     }
 
     @Override
     public int getItemCount() {
-        return matriz.size();
+        return this.p.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -61,7 +57,7 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.ViewHolder> 
         public TextView txtExatas;
         public TextView txtSaude;
 
-        public ViewHolder(View itemView){
+        public ViewHolder(View itemView) {
             super(itemView);
             txtAno = itemView.findViewById(R.id.txtAno);
             txtSemestre = itemView.findViewById(R.id.txtSemestre);
@@ -70,32 +66,30 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.ViewHolder> 
             txtHumanas = itemView.findViewById(R.id.txtHumanas);
             txtExatas = itemView.findViewById(R.id.txtExatas);
             txtSaude = itemView.findViewById(R.id.txtSaude);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (listener != null){
                         int position = getAdapterPosition();
                         if(position != RecyclerView.NO_POSITION){
-                            listener.onPalavraClick(v, position);
+                            listener.onPlanejamentoClick(v, position);
                         }
 
                     }
                 }
             });
-        }
-
-        @Override
-        public void onClick(View v) {
-            int position = getAdapterPosition();
-            if (position != RecyclerView.NO_POSITION){
-                listener.onPalavraClick(v, position);
             }
-        }
+            @Override
+            public void onClick(View v) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION){
+                    listener.onPlanejamentoClick(v, position);
+                }
+            }
     }
-
-    public interface OnPalavraClickListener {
-        public void onPalavraClick(View v, int position);
+    public interface OnPlanejamentoClickListener {
+        public void onPlanejamentoClick(View v, int position);
     }
-
 
 }
